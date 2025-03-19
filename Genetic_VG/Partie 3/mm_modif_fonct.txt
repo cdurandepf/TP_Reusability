@@ -1,0 +1,44 @@
+chrom : 
+
+from random import choice
+def generate_random_guess(self):
+	_colors = ['blue', 'red', 'green', 'yellow', 'orange', 'violet']
+	secret = [choice(_colors) for _ in range(4)]
+	if self.first : 
+		self.solution = [choice(_colors) for _ in range(4)]
+	self.temp_chrom = secret
+generate_random_guess(self)
+
+fit: 
+
+def rate_guess(self, chrom):
+	correct_position = 0
+	correct_colors = 0
+	count = 0
+	for color in chrom:
+		if solution[count] == color:
+			correct_position += 1
+		elif color in solution:
+			correct_colors += 1
+		count += 1
+	score = correct_colors*1 + correct_position *3
+	self.temp_fit = score
+rate_guess(self, chrom)
+
+
+cross: 
+
+import random
+def cross_population(self, parent_a, parent_b): 
+	_colors = ['blue', 'red', 'green', 'yellow', 'orange', 'violet']      
+	prob_mutation = random.random() # generate the probability of a mutation
+	if prob_mutation < self._mutation_rate : 
+		new_gene = random.choice(_colors) # chose the mutation
+		position_mutation = random.randrange(0, len(parent_a.chromosome)) #generate the position of the mutation
+		new_chrom = parent_a.chromosome[0:position_mutation] + [new_gene] + parent_b.chromosome[position_mutation+1:] 
+	else :  
+		x_point = random.randrange(0, len(parent_a.chromosome)) # generate the crossing point
+		new_chrom = parent_a.chromosome[0:x_point] + parent_b.chromosome[x_point:] # concatenate both parents gene
+	self.temp_indiv_chrom =  new_chrom
+cross_population(self,parent_a, parent_b)
+
